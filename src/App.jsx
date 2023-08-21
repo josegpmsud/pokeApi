@@ -13,6 +13,9 @@ function App() {
       })
       .catch(function (error) {
         console.log(error);
+        if(error){
+          alert("No se encontro el poquemon intenta escribir el nombre correctamente")
+        }
       })
       .finally(function () {
       })
@@ -26,6 +29,7 @@ function App() {
         <h1>{pokemon.name}</h1>
         <h2>{pokemon.id}</h2>
         <img src={pokemon.sprites.front_shiny}></img>
+        
       </>
     }
     </>
