@@ -1,14 +1,14 @@
+
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import ApiClime from './components/apiClime/ApiClime'
-import ListCard from './components/listCard/ListCard';
+import Card from '../card/Card';
 
-function App() {
+function ListCard() {
 
   const [pokemon,setPokemon] = useState();
   const [nombrePokemon, setNombrePokemon] = useState('');
 
-  const obtenerPokemon = () => {axios.get('https://pokeapi.co/api/v2/pokemon/'+nombrePokemon)
+  const obtenerPokemon = () => {axios.get('https://pokeapi.co/api/v2/pokemon/')
       .then(function (response) {
         console.log(response.data);
         setPokemon(response.data);
@@ -24,15 +24,14 @@ function App() {
 };
   return (
     <>
-    <input placeholder='Ingrese el Nombre del pokemon' onChange={(e)=>setNombrePokemon(e.target.value)}></input>
 
     { pokemon &&
       <>
-        <ApiClime></ApiClime>
-        <h1>{pokemon.name}</h1>
-        <h2>{pokemon.id}</h2>
-        <img src={pokemon.sprites.front_shiny}></img>
-        <ListCard></ListCard>
+        <Card
+        id={pokemon.id}
+        nombre={pokemon.name}
+        src={pokemon.sprites.front_shiny}>
+        </Card>
 
       </>
     }
@@ -40,4 +39,11 @@ function App() {
   )
 }
 
-export default App
+export default ListCard
+
+
+
+
+
+
+
